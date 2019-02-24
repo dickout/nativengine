@@ -2,11 +2,14 @@
 
 namespace apps\core\classes;
 
+use apps\core\classes\ErrorHandler;
+
 class App 
 {
 	public $system;
 
-	public function __construct ($system) {
+	public function __construct ($system) 
+	{
 		$this->system = $system;
 	}
 
@@ -17,12 +20,12 @@ class App
 	public function dispatch () 
 	{
 		$queue = $this->system->getAppLoader()->getApps();
+		$errorHandler = new ErrorHandler(true);
 		
 		do {
 			foreach ($queue as $appname => $app) {
-				$relations = $this->system->getAppLoader()->$appname()->relations;
-
-				if(isset($relations)) {
+				if(isset($this->system->getAppLoader()->$appname()->relations)) {
+					$relations = $this->system->getAppLoader()->$appname()->relations;
 					$relationsLoaded = true;
 
 					foreach($relations as $name)

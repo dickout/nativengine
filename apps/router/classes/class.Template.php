@@ -18,6 +18,8 @@ class Template
 		else {
 			$this->viewer = $viewer;
 			$this->route = $route;
+			
+			$this->vars["title"] = "Application Title";
 			$this->vars["view"] = $this->route["path"]["action"];
 			$this->vars["front"] = DOMAIN . "/apps/" . $this->route["app"] . $this->route["data"]["frontdir"];
 		}
@@ -47,7 +49,8 @@ class Template
 
 		foreach ($matches as $string) {
 			$var = str_replace(["{{", "}}"], "", $string);
-			$template = str_replace($string, $this->vars[$var], $template);
+			if(isset($this->vars[$var]))
+				$template = str_replace($string, $this->vars[$var], $template);
 		}
 
 		return $template;
