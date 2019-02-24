@@ -13,6 +13,7 @@ class App extends WebApp
             [ "webdir" => "", "frontdir" => "/assets" ],
             [ "$^" => ["controller" => "Main", "action" => "main"] ]
         );
+        
     }
 }
 
