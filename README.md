@@ -7,3 +7,8 @@ Engine for the web, but where is the web? The application `router` - the impleme
 How it works? An application has been created for loading applications (paradox, yeah). Yes it is, but it is brilliant. You can create your application loader based on the `core` application.
 
 For example, you can make a plugin loader for applications. Also, applications have dependencies. For example, a web application depends on `router` and `core`.
+
+## What you need?
+1. PHP 7.x version 
+2. ECMAScript 2016 browser support (for the future)
+3. CSS Grid and etc. support (for the `CMS` application in the future)
