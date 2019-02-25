@@ -21,6 +21,13 @@ class FileManager
 		fclose($fileThread);
 	}
 
+	public static function returnFile (string $fullPath)
+	{
+		if(self::fileExists($fullPath))
+			return require ($fullPath);
+		return null;
+	}
+
 	public static function createFile (string $fullPath, $recreate = false)
 	{
 		if(!$recreate and !self::fileExists($fullPath))
@@ -32,6 +39,16 @@ class FileManager
 			self::createFileThread($fullPath);
 		}
 
+	}
+
+	public static function createDir (string $fullPath, $recreate = false)
+	{
+		if(!self::dirExists($fullPath)) {
+			if(!self::dirExists(dirname($fullPath)))
+				self::createDir(dirname($fullPath));
+
+			return mkdir($fullPath);
+		}
 	}
 
 	public static function deleteFile (string $fullPath)

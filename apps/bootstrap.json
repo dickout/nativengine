@@ -1,3 +1,4 @@
 {
-    "app": "core"
+    "app": "core",
+    "execution_time": true
 }
